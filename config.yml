@@ -1,0 +1,21 @@
+#cloud-config
+ssh_authorized_keys:
+- ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCavSkXLw3yC+McrS3Nthsk9RFk/jSB3m2BP/6QfT+M17hrHZZj6OA1glOKaHY1vVbKSbxuLQLqOa2J2rPNP0wfQ9wJWXGLLmOprjYTbtuF/+I6MppdMylZT2simxrmohdbzIG1RV3p0Zi0TjBgrJCbPa5irzhI0Te93h00E5njZcMGrKhNtXwhHv7OjjGV7e/DUYxa0L31RlhKuzw/ECke4mSnnTf6TrgGhVSZNm8S3NXjq5oL0UuEFyJWWKL0E1asKubW9pQT2P/grqQJ3bg5VDATkQEQACjegcbYsnM7/5z6cM7GQzmuMqARNyTr24azrMvFl0JoOi1W/ewFXB5z ryan.grothouse
+hostname: rancheros1
+
+# NFS Mount
+rancher:
+  services_include:
+    ubuntu-console: true
+  network:
+    interfaces:
+      eth*:
+        dhcp: false
+      eth0:
+        address: 192.168.1.236/24
+        gateway: 192.168.1.1
+        mtu: 1500
+    dns:
+      nameservers:
+        - 192.168.1.237
+        - 8.8.8.8
